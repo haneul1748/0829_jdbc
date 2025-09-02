@@ -2,27 +2,128 @@ package com.kh.practice.model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import com.kh.practice.model.vo.practiceVo;
+import com.kh.practice.model.vo.PracticeVO;
 
-public class practiceDao {
-
-	public List<practiceVo> findAll() {
+public class PracticeDao {
+	private final String DRIVER ="oracle.jdbc.driver.OracleDriver" ; 
+	private final String URL = "jdbc:oracle:thin:@115.90.212.20:10000:XE";
+	private final String USERNAME = "ksky05";
+	private final String PASSWORD = "KSKY1234";
+	
+	public int insert(PracticeVO pv) {
 		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rset = null;
-		List<practiceVo> singer = new practiceVo();
+		PreparedStatement pstmt = null;
+		int result = 0;
 		
 		String sql = """
-				
+						INSERT
+						  INTO
+						  	   TB_SINGER 
+						VALUES 
+							   (
+							   SEQ_SNO.NEXTVAL
+							 , ?
+							 , ?
+							 , ?
+							 , ?
+							 , NULL
+							 )
 					""";
 		
-		conn = DriverManager.getConnection("oracle.jdbc.");
+		try {
+			// 1)
+			Class.forName(DRIVER);
+			
+			// 2)
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			
+			// 3)
+			conn.setAutoCommit(false);
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, pv.getSingerName());
+			pstmt.setString(2, pv.getSingerMajor());
+			pstmt.setString(3, pv.getSingerDate());
+			pstmt.setString(4, pv.getSingerAgency());
+			
+			result = pstmt.executeUpdate();
+			
+			if(result > 0) {
+				conn.commit();
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			try {
+				if(pstmt != null) {
+					pstmt.close();	
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			try {
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
 		
-		
-		return ;
+		return result;
 	}
+	
+	public List<PracticeVO> findAll() {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<PracticeVO> pv = new ArrayList();
+		
+		String sql = """
+						SELECT 
+							   S_NO
+							 , S_NAME
+							 , S_MAJOR
+							 , S_DATE
+							 , S_AGENCY
+							 , S_RETIRE
+						  FROM 
+							   TB_SINGER
+					     ORDER
+					     	BY
+					     	   S_DATE DESC
+					""";
+		
+		try {
+			Class.forName(DRIVER);
+			
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 }

@@ -3,28 +3,13 @@ package com.kh.practice.model.vo;
 import java.sql.Date;
 import java.util.Objects;
 
-public class practiceVo {
+public class PracticeVO {
 	private int singerNo;
 	private String singerName;
 	private String singerMajor;
-	private Date singerDate;
+	private String singerDate;
 	private String singerAgency;
 	private Date singerRetire;
-	
-	public practiceVo() {
-		super();
-	}
-	
-	public practiceVo(int singerNo, String singerName, String singerMajor, Date singerDate, String singerAgency,
-			Date singerRetire) {
-		super();
-		this.singerNo = singerNo;
-		this.singerName = singerName;
-		this.singerMajor = singerMajor;
-		this.singerDate = singerDate;
-		this.singerAgency = singerAgency;
-		this.singerRetire = singerRetire;
-	}
 	public int getSingerNo() {
 		return singerNo;
 	}
@@ -43,10 +28,10 @@ public class practiceVo {
 	public void setSingerMajor(String singerMajor) {
 		this.singerMajor = singerMajor;
 	}
-	public Date getSingerDate() {
+	public String getSingerDate() {
 		return singerDate;
 	}
-	public void setSingerDate(Date singerDate) {
+	public void setSingerDate(String singerDate) {
 		this.singerDate = singerDate;
 	}
 	public String getSingerAgency() {
@@ -61,6 +46,17 @@ public class practiceVo {
 	public void setSingerRetire(Date singerRetire) {
 		this.singerRetire = singerRetire;
 	}
+	
+	public PracticeVO() {
+		super();
+	}
+	public PracticeVO(String singerName, String singerMajor, String singerDate, String singerAgency) {
+		super();
+		this.singerName = singerName;
+		this.singerMajor = singerMajor;
+		this.singerDate = singerDate;
+		this.singerAgency = singerAgency;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(singerAgency, singerDate, singerMajor, singerName, singerNo, singerRetire);
@@ -73,16 +69,17 @@ public class practiceVo {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		practiceVo other = (practiceVo) obj;
+		PracticeVO other = (PracticeVO) obj;
 		return Objects.equals(singerAgency, other.singerAgency) && Objects.equals(singerDate, other.singerDate)
 				&& Objects.equals(singerMajor, other.singerMajor) && Objects.equals(singerName, other.singerName)
 				&& singerNo == other.singerNo && Objects.equals(singerRetire, other.singerRetire);
 	}
 	@Override
 	public String toString() {
-		return "practiceVo [singerNo=" + singerNo + ", singerName=" + singerName + ", singerMajor=" + singerMajor
+		return "PracticeVO [singerNo=" + singerNo + ", singerName=" + singerName + ", singerMajor=" + singerMajor
 				+ ", singerDate=" + singerDate + ", singerAgency=" + singerAgency + ", singerRetire=" + singerRetire
 				+ "]";
 	}
+	
 	
 }
