@@ -1,0 +1,36 @@
+-- 1. 회원 전체 조회 findAll()
+SELECT
+	   EMP_ID
+	 , EMP_NAME
+	 , SALARY
+	 , DEPT_TITLE
+	 , JOB_NAME
+  FROM
+  	   EMPLOYEE
+  JOIN
+   	   JOB USING (JOB_CODE)
+  LEFT
+  JOIN
+	   DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+ ORDER 
+ 	BY 
+ 	   EMP_ID ASC;
+
+SELECT * FROM EMPLOYEE;
+
+--2. 부서명을 입력받아 부서가 동일한 사원 조회 => findByDeptTitle()
+SELECT
+	   EMP_ID
+	 , EMP_NAME
+	 , SALARY
+	 , DEPT_TITLE
+	 , JOB_NAME
+  FROM
+  	   EMPLOYEE
+  JOIN
+   	   JOB USING (JOB_CODE)
+  LEFT
+  JOIN
+	   DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+ WHERE
+ 	   DEPT_TITLE = ?;

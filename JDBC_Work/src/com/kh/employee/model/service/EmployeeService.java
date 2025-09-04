@@ -1,0 +1,35 @@
+package com.kh.employee.model.service;
+
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.getConnection;
+
+import java.sql.Connection;
+import java.util.List;
+
+import com.kh.employee.model.dao.EmployeeDAO;
+import com.kh.employee.model.vo.Employee;
+
+public class EmployeeService {
+	private Connection conn = null;
+
+	public EmployeeService() {
+		this.conn = getConnection();
+	}
+
+	public List<Employee> findAll() {
+		List<Employee> employees = new EmployeeDAO().findAll(conn);
+
+		close(conn);
+		
+		return employees;
+	}
+	
+	public List<Employee> findByDeptTitle(String deptTitle) {
+		List<Employee> employees = new EmployeeDAO().findByDeptTitle(conn, deptTitle);
+	
+		close(conn);
+		
+		return employees;
+	}
+	
+}

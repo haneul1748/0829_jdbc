@@ -1,0 +1,13 @@
+1. 회원 전체 조회 => findAll()  => SELECT
+(사번, 사원명, 급여, 부서명, 직급명)
+2. 부서명을 입력받아 부서가 동일한 사원 조회 => findByDeptTitle() => SELECT 
+(사번, 사원명, 급여, 부서명, 직급명)
+3. 직급명을 입력받아 직급이 동일한 사원 조회 => findByJobName() => SELECT
+(사번, 사원명, 급여, 부서명, 직급명)
+4. 사원 상세 조회 (사번을 입력받아서 모든 컬럼 값 조회 = EMP_ID ) => findByEmpId() => SELECT
+5. 급여가 높은 상위 다섯명 조회 ROWNUM 또는 OFFSET 사용 => findByHighSalary() => SELECT
+6. 급여가 낮은 하위 다섯명 조회 ROWNUM 또는 OFFSET 사용 => findByLowSalary() => SELECT
+7. 사원 추가 기능 => insertEmp() => INSERT
+8. 사원 정보 수정(사번을 입력받아 급여, 직급, 부서 수정) => updateEmp() => UPDATE
+9. 사원 퇴사 기능(사번을 입력받아 퇴사 여부, 퇴사일 수정) => EntDateEmp() => UPDATE
+10. 프로그램 종료
