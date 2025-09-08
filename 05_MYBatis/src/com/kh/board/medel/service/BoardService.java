@@ -72,6 +72,7 @@ public class BoardService {
 		// 직접 한땀한땀 만든게아니라 시퀀스로 만든건데...
 		// 1부터 시작인데 이상한 숫자 0이하값 들어오면 갈 필요없는데...
 		// DB가면 돈드는데... 아까운데..
+		/*
 		Board board = null;
 				
 		
@@ -80,6 +81,14 @@ public class BoardService {
 		}
 		
 		JDBCTemplate.close(conn);
+		*/
+		SqlSession session = Template.getsqlSession();
+		
+		if(boardNo > 0) {
+			Board board = new BoardDAO().selectBoard(session, boardNo);
+		}
+		
+		session.close();
 		
 		return board;
 	}

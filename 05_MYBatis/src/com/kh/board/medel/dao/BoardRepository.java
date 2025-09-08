@@ -11,5 +11,8 @@ public class BoardRepository {
 	public List<Board> selectBoardList(SqlSession session) {
 		return session.selectList("boardMapper.selectBoardList");
 	}
-
+	
+	public Board selectBoard(SqlSession session, int boardNo) {
+		return session.selectOne("boardMapper.selectBoard");
+	}
 }
