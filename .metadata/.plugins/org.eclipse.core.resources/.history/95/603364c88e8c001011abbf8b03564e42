@@ -83,9 +83,9 @@ public class BoardService {
 		JDBCTemplate.close(conn);
 		*/
 		SqlSession session = Template.getsqlSession();
-		Board board = null;
+		Board board
 		if(boardNo > 0) {
-			board = new BoardRepository().selectBoard(session, boardNo);
+			Board board = new BoardRepository().selectBoard(session, boardNo);
 		}
 		
 		session.close();
