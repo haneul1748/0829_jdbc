@@ -3,10 +3,14 @@ package com.kh.board.medel.service;
 import java.sql.Connection;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.kh.board.medel.dao.BoardDAO;
+import com.kh.board.medel.dao.BoardRepository;
 import com.kh.board.medel.dto.BoardDTO;
 import com.kh.board.medel.vo.Board;
 import com.kh.common.JDBCTemplate;
+import com.kh.common.Template;
 import com.kh.statement.model.dao.MemberDao;
 import com.kh.statement.model.vo.Member;
 
@@ -28,7 +32,7 @@ public class BoardService {
 		}
 		// 제목 : 안녕하세요, 내용 : 반갑습니다, 아이디 : admin
 		// 2. 인증 / 인가
-		Member member = new MemberDao().findById(conn, bd.getBoardWriter());
+		Member member = new MemberDao().findById((SqlSession) conn, bd.getBoardWriter());
 		
 		if(member != null) {
 			int userNo = member.getUserNo();
@@ -46,10 +50,18 @@ public class BoardService {
 	}
 	
 	public List<Board> selectBoardList() {
-		
+		/*
 		List<Board> boards = new BoardDAO().selectBoardList(conn);
 		new BoardDAO().outputHTML(conn);
 		JDBCTemplate.close(conn);
+		
+		return boards;
+		*/
+		SqlSession session = Template.getsqlSession();
+		
+		List<Board> boards = new BoardRepository().selectBoardList(session);
+		
+		session.close();
 		
 		return boards;
 	}

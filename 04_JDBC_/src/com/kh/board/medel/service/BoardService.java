@@ -52,6 +52,11 @@ public class BoardService {
 		JDBCTemplate.close(conn);
 		
 		return boards;
+		
+		
+		
+		
+		return boards;
 	}
 	
 	public Board selectBoard(int boardNo) {
