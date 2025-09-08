@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.kh.common.Template;
 import com.kh.statement.model.vo.Member;
 
 public class MemberDao {
@@ -52,5 +51,8 @@ public class MemberDao {
 		return session.selectList("memberMapper.findByKeyword", keyword);
 	}
 	
+	public int update(SqlSession session, PasswordDTo pd) {
+		return session.update("memberMapper.update", pd);
+	}
 	
 }
