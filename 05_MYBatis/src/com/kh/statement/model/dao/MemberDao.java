@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.kh.statement.model.dto.PasswordDTO;
 import com.kh.statement.model.vo.Member;
 
 public class MemberDao {
@@ -51,8 +52,11 @@ public class MemberDao {
 		return session.selectList("memberMapper.findByKeyword", keyword);
 	}
 	
-	public int update(SqlSession session, PasswordDTo pd) {
+	public int update(SqlSession session, PasswordDTO pd) {
 		return session.update("memberMapper.update", pd);
 	}
 	
+	public int delete(SqlSession session, Member member) {
+		return session.delete("memberMapper.delete", member);
+	}
 }

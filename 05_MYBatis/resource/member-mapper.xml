@@ -116,6 +116,28 @@
 		 WHERE
 		 	   USERID LIKE '%' || #{keyword} || '%'
 	</select>
-
+	
+	<update id="update"
+			parameterType="com.kh.statement.model.dto.PasswordDTO">
+		UPDATE
+			   MEMBER
+		   SET 
+		 	   USERPWD = #{newPassword}
+		 WHERE
+		 	   USERID = #{userId}
+		   AND
+		   	   USERPWD = #{userPwd}
+	</update>
+	
+	<delete id="delete"
+			parameterType="member">
+		DELETE
+			   MEMBER
+		 WHERE
+		 	   USERID = #{userId}
+		   AND
+		   	   USERPWD = #{userPwd}
+			
+			</delete>
 
 </mapper>

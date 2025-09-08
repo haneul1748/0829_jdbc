@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.kh.common.Template;
 import com.kh.statement.model.dao.MemberDao;
+import com.kh.statement.model.dto.PasswordDTO;
 import com.kh.statement.model.vo.Member;
 
 public class MemberService {
@@ -68,6 +69,34 @@ public class MemberService {
 		return members;
 	}
 	
+	public int update(PasswordDTO pd) {
+		
+		SqlSession session = Template.getsqlSession();
+		
+		int result = memberDao.update(session, pd);
+		
+		if(result > 0) {
+			session.commit();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+	
+	public int delete(Member member) {
+		SqlSession session = Template.getsqlSession();
+		
+		int result = memberDao.delete(session, member);
+		
+		if(result > 0) {
+			session.commit();
+		}
+		
+		session.close();
+		
+		return result;
+	}
 	
 	
 	
