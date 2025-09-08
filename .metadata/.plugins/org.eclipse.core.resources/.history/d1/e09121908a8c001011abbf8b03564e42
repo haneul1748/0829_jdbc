@@ -4,7 +4,8 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardMapper">
 	
-	<sql id="boardColumn">
+	<select id="selectBoardList"
+			resultType="board">
 		SELECT
 			   BOARD_NO boardNo
 			 , BOARD_TITLE boardTitle
@@ -16,23 +17,16 @@
 		  	   MEMBER ON (USERNO = BOARD_WRITER)
 		 WHERE
 		 	   DELETE_YN = 'N'
-	</sql>
-	
-	<select id="selectBoardList"
-			resultType="board">
-		<include refid="boardColumn"/>
 		 ORDER
 		 	BY
 		 	   BOARD_NO DESC
 	</select>
 	
-	<select id="selectBoard"
-			parameterType="_int"
-			resultType="board">
-		<include refid="boardColumn"/>
-		 	  
-	       AND
-	       	   BOARD_NO = #{board}
+	<select id="selectBoard">
+	
+	
+	
+	
 	</select>
 	
 	

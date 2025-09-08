@@ -85,7 +85,7 @@ public class BoardService {
 		SqlSession session = Template.getsqlSession();
 		
 		if(boardNo > 0) {
-			Board board = new BoardRepository().selectBoard(session, boardNo);
+			Board board = new BoardDAO().selectBoard(session, boardNo);
 		}
 		
 		session.close();
