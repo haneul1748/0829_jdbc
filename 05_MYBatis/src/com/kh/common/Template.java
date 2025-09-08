@@ -7,7 +7,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class Template {
+public class Template { 
 
 	// Connection 객체의 역할을 대신할 SqlSession객체를 만들어서 반환해주는 메소드를 구현할 것
 	

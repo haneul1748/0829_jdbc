@@ -81,7 +81,7 @@ public class MemberService {
 		
 		session.close();
 		
-		return result;
+		return result; 
 	}
 	
 	public int delete(Member member) {
