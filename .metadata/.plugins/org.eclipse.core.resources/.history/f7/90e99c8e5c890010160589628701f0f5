@@ -1,0 +1,39 @@
+package com.kh.employee.view;
+
+import java.util.Scanner;
+
+public class EmployeeView {
+	private Scanner sc = new Scanner(System.in);
+
+	public void mainView() {
+		while (true) {
+			System.out.println("==== 사원 관리 프로그램입니다. ====");
+			System.out.println("1. 회원 전체 조회 ");
+			System.out.println("2. 부서명을 통한 사원 조회 ");
+			System.out.println("3. 직급명을 통한 사원 조회 ");
+			System.out.println("4. 사원 상세 조회입니다. ");
+			System.out.println("5. 급여가 높은 상위 다섯명 조회 기능입니다. ");
+			System.out.println("6. 급여가 낮은 하위 다섯명 조회 기능입니다. ");
+			System.out.println("7. 사원 추가 기능입니다 ");
+			System.out.println("8. 사원 정보 수정입니다 ");
+			System.out.println("9.사원 퇴사 기능입니다 ");
+			System.out.println("10. 프로그램 종료입니다.");
+			System.out.println("번호를 입력해주세요!! > ");
+			int menuNo = sc.nextInt();
+			sc.nextLine();
+
+			switch (menuNo) {
+			case 1 : break;
+			case 2 : break;
+			case 3 : break;
+			case 4 : break;
+			case 5 : break;
+			case 6 : break;
+			case 7 : break;
+			case 8 : break;
+			case 9 : break;
+			case 10 : System.out.println("시스템을 종료합니다"); return;
+			}
+		}
+	}
+}

@@ -1,0 +1,9 @@
+package com.kh.board.view;
+
+import java.util.Scanner;
+
+public class BoardView {
+	
+	private Scanner sc = new Scanner(System.in);
+	priavte BoardController bc = new BoardController();
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;JDBCTemplate.java&apos; to &apos;common&apos;" description="Move &apos;JDBCTemplate.java&apos; to &apos;common&apos;" destination="src/com/kh/common" element1="src/com/kh/JDBCTemplate.java" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1756858783082" updateReferences="true"/>
+</session>

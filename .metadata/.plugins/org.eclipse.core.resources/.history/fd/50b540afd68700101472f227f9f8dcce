@@ -1,0 +1,15 @@
+package com.kh.practice.controller;
+
+import com.kh.practice.model.dao.PracticeDao;
+
+public class PracticeController {
+	private PracticeDao pd = new PracticeDao();
+	
+	public void insert() {
+		
+		pd.insert();
+		
+		
+	}
+	
+}

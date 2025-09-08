@@ -1,0 +1,20 @@
+package com.kh.employee.controller;
+
+import java.util.List;
+
+import com.kh.employee.model.service.EmployeeService;
+import com.kh.employee.model.vo.Employee;
+
+public class EmployeeController {
+
+	public List<Employee> findAll() {
+		List<Employee> employees = new EmployeeService().findAll();
+		return employees;
+	}
+	
+	public List<Employee> findByDeptTitle(String deptTitle) {
+		List<Employee> employees = new EmployeeServices().findByDeptTitle();
+		return employees;
+	}
+
+}

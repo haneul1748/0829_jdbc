@@ -1,0 +1,8 @@
+package com.kh.practice.controller;
+
+public class PracticeController {
+	public void insert() {
+		
+	}
+	
+}

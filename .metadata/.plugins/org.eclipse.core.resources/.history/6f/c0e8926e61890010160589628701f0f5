@@ -1,0 +1,37 @@
+package com.kh.employee.model.service;
+
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.getConnection;
+
+import java.lang.reflect.Member;
+import java.sql.Connection;
+import java.util.List;
+import java.util.function.Function;
+
+import com.kh.employee.model.dao.EmployeeDAO;
+ 
+
+public class EmployeeService {
+	private Connection conn = null;
+	
+	private <T> T executeQuery(Function<Connection, T> daoFunction) {
+		Connection conn = null;
+		T result = null;
+		
+		conn = getConnection();
+		daoFunction.apply(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	
+	public EmployeeService() {
+		this.conn = getConnection();
+	}
+	
+	public List<Member> findAll() {
+		return executeQuery(new EmployeeDAO()::findAll());
+	}
+
+}

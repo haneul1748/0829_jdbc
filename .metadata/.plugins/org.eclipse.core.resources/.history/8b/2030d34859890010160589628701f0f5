@@ -1,0 +1,13 @@
+package com.kh.employee.view;
+
+public class EmployeeView {
+	
+	public void mainView() {
+		while(true) {
+			
+			
+			
+			
+		}
+	}
+}

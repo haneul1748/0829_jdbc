@@ -1,0 +1,37 @@
+package com.kh.statement.model.service;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.kh.common.Template;
+import com.kh.statement.model.dao.MemberDao;
+import com.kh.statement.model.vo.Member;
+
+public class MemberService {
+	private MemberDao memberDao = new MemberDao();
+	
+	public int save(Member member) {
+		/*
+		 * Connection conn = JDBCTemplate.getConnection();
+		 * 
+		 * int result = new MemberDao().save(conn, member);
+		 * 
+		 * if(result > 0) {
+		 * 		JDBCTemplate.close(conn);
+		 *  }
+		 *  
+		 *  return result;
+		 */
+		SqlSession session = Template.getsqlSession();
+		
+		int reuslt = memberDao.save(session, member);
+		
+		if(reuslt > 0) {
+			session.commit();
+		}
+		
+		session.close();
+		
+		return relsult;
+	}
+	
+}

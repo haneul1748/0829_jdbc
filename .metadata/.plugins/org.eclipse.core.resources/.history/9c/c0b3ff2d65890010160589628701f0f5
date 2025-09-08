@@ -1,0 +1,12 @@
+package com.kh.employee.controller;
+
+import com.kh.employee.model.service.EmployeeService;
+
+public class EmployeeController {
+
+	public void findAll() {
+		new EmployeeService().findAll();
+		
+	}
+
+}

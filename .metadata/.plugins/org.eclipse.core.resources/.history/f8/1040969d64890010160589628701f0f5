@@ -1,0 +1,50 @@
+package com.kh.employee.model.dao;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import com.kh.employee.model.vo.Employee;
+
+
+public class EmployeeDAO {
+	
+	private Properties prop = new Properties();
+	
+	public EmployeeDAO() {
+		try {
+			prop.loadFromXML(new FileInputStream("resources/employee-mapper.xml"));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	public List<Employee> findAll(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Employee> employee = new ArrayList();
+		String sql = prop.getProperty("findAll");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				Employee employee = new Employee(rset.getString("")
+						);
+										
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		
+
+	
+	}
+}

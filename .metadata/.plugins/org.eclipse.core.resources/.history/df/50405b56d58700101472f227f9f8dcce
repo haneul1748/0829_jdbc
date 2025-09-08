@@ -1,0 +1,55 @@
+package com.kh.practice.model.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class PracticeDao {
+	private final String DRIVER ="oracle.jdbc.driver.OracleDriver" ; 
+	private final String URL = "jdbc:oracle:thin:@115.90.212.20:10000:XE";
+	private final String USERNAME = "ksky05";
+	private final String PASSWORD = "KSKY1234";
+	
+	public int insert() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = """
+						INSERT
+						  INTO
+						  	   TB_SINGER 
+						VALUES 
+							   (
+							   SEQ_SNO.NEXTVAL
+							 , ?
+							 , ?
+							 , ?
+							 , ?
+							 , S_RETIRE)
+					""";
+		
+		try {
+			// 1)
+			Class.forName(DRIVER);
+			
+			// 2)
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			
+			// 3)
+			conn.setAutoCommit(false);
+			
+			pstmt = conn.prepareStatement(sql);
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+<!-- namespace : 각 mapper의 고유한 별칭 -->
+	<!-- 
+		* DML일 경우
+		<insert id="각 SQL문의 식별자">
+			쿼리문
+		</insert>	
+		<update></update>
+		<delete></delete>
+		
+		* SELECT일 경우
+		
+		==> 그동안 pstmt 객체를 이용해서 ?를 썻지만,
+		앞으로는 위치홀더 대신 해당 SQL문에 전달된 객체로부터 값을 꺼내서 사용! => 내부적으로는 getter
+		getter호출방법 == #{필드명 또는 변수명 또는 map의 키값}
+	-->
+	<insert id="save"
+	 parameterType="com.kh.statement.model.vo.Member">
+		INSERT
+		  INTO
+		  	   MEMBER
+		VALUES
+			   (
+			   SEQ_USERNO.NEXTVAL
+			 , #{userId}
+			 , #{userPwd}
+			 , #{userName}
+			 , #{email}
+			 , SYSDATE	
+			   )
+	</insert>
+
+</mapper>

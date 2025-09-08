@@ -1,0 +1,62 @@
+package com.kh.employee.view;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.kh.employee.controller.EmployeeController;
+import com.kh.employee.model.vo.Employee;
+
+public class EmployeeView {
+	private Scanner sc = new Scanner(System.in);
+	private EmployeeController ec = new EmployeeController();
+	
+	public void mainView() {
+		while (true) {
+			System.out.println("==== 사원 관리 프로그램입니다. ====");
+			System.out.println("1. 사원 전체 조회입니다. ");
+			System.out.println("2. 부서명을 통한 사원 조회입니다. ");
+			System.out.println("3. 직급명을 통한 사원 조회입니다. ");
+			System.out.println("4. 사원 상세 조회입니다. ");
+			System.out.println("5. 급여가 높은 상위 다섯명 조회 기능입니다. ");
+			System.out.println("6. 급여가 낮은 하위 다섯명 조회 기능입니다. ");
+			System.out.println("7. 사원 추가 기능입니다. ");
+			System.out.println("8. 사원 정보 수정입니다. ");
+			System.out.println("9.사원 퇴사 기능입니다. ");
+			System.out.println("10. 프로그램 종료입니다.");
+			System.out.println("번호를 입력해주세요!! > ");
+			int menuNo = sc.nextInt();
+			sc.nextLine();
+
+			switch (menuNo) {
+			case 1 : findAll(); break;
+			case 2 : break;
+			case 3 : break;
+			case 4 : break;
+			case 5 : break;
+			case 6 : break;
+			case 7 : break;
+			case 8 : break;
+			case 9 : break;
+			case 10 : System.out.println("시스템을 종료합니다"); return;
+			}
+		}
+	}
+	
+	public void findAll() {
+		System.out.println("\n 사원 전체 조회 시스템입니다.");
+		
+		List<Employee> employee = ec.findAll();
+		
+		if(employee.isEmpty()) {
+			System.out.println("조회된 결과가 없습니다.");
+		} else {
+			for(Employee e : employee) {
+				System.out.println("사원 번호 : " + e.getEmpId());
+				System.out.println("사원명 : " + e.getEmpName());
+				System.out.println("급여 : " + e.getSalary());
+				System.out.println("부서명 : " + e.getDeptCode());
+				System.out.println("직급명 : " + e.getJobCode());
+			}
+		}
+	}
+}

@@ -1,0 +1,45 @@
+package com.kh.board.medel.service;
+
+import java.sql.Connection;
+
+import com.kh.board.medel.dao.BoardDAO;
+import com.kh.board.medel.dto.BoardDTO;
+import com.kh.board.medel.vo.Board;
+import com.kh.common.JDBCTemplate;
+import com.kh.statement.model.dao.MemberDao;
+import com.kh.statement.model.vo.Member;
+
+public class BoardService {
+	private Connection conn = null;
+	
+	public BoardService() {
+		this.conn = JDBCTemplate.getConnection();
+	}
+	
+	public void insertBoard(BoardDTO bd) {
+		// 내가 입력한 값을 가지고
+		// Board테이블에 한 행 INSERT해줘~
+		int result = 0;
+		
+		// 1. 값의 유효성 검증
+		if("".equals(bd.getBoardTitle().trim())) {
+			return result;
+		}
+		// 제목 : 안녕하세요, 내용 : 반갑습니다, 아이디 : admin
+		// 2. 인증 / 인가
+		Member member = new MemberDao().findById(conn, bd.getBoardWriter());
+		
+		if(member != null) {
+			int userNo = member.getUserNo();
+			Board board = new Board(0, bd.getBoardTitle(), bd.getBoardContent(), String.valueof(userNO), null, null);
+			result = new BoardDAO().insertBoard(conn, board);
+		}
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+}

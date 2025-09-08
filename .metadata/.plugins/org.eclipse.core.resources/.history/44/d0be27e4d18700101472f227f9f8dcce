@@ -1,0 +1,12 @@
+package com.kh.practice.model.vo;
+
+import java.sql.Date;
+
+public class PracticeVO {
+	private int singerNo;
+	private String singerName;
+	private String singerMajor;
+	private Date singerDate;
+	private String singerAgency;
+	private Date singerRetire;
+}

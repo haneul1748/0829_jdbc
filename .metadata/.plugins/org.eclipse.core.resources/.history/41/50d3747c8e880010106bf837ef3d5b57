@@ -1,0 +1,14 @@
+package com.kh.board.controller;
+
+import com.kh.board.medel.dto.BoardDTO;
+import com.kh.board.medel.service.BoardService;
+
+public class BoardController {
+	
+	public void insertBoard(BoardDTO bd) {
+		
+		new BoardService().insertBoard(bd);
+		
+	}
+	
+}

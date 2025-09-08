@@ -1,0 +1,16 @@
+package com.kh.employee.model.service;
+
+import java.sql.Connection;
+
+public class EmployeeService {
+	private Connection conn = null;
+	
+	public EmployeeService() {
+		this.conn = getConnection();
+	}
+	
+	public void findAll() {
+		
+	}
+
+}

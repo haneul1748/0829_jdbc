@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>EMPLOYEE SQL</comment>
+<entry key="A">B</entry>
+<entry key="findAll">
+	SELECT 
+		   EMP_ID
+	     , EMP_NAME
+         , SALARY
+	     , DEPT_TITLE
+	     , JOB_NAME
+  	  FROM
+  	 	   EMPLOYEE
+  	  JOIN 
+   	 	   JOB USING (JOB_CODE)
+      LEFT
+      JOIN
+	       DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+	 ORDER 
+ 		BY 
+   		   EMP_ID ASC
+</entry>
+<entry key="findByDeptTitle"></entry>
+<entry key="findByJobName"></entry>
+<entry key="findByEmpId"></entry>
+<entry key="findByHighSalary"></entry>
+<entry key="findByLowSalary"></entry>
+<entry key="insertEmp"></entry>
+<entry key="updateEmp"></entry>
+<entry key="EntDateEmp"></entry>
+</properties>
